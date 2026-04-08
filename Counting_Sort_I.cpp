@@ -1,16 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-/*
- * Complete the 'countingSort' function below.
- * The function is expected to return an INTEGER_ARRAY.
- * The function accepts INTEGER_ARRAY arr as parameter.
- */
-
 vector<int> countingSort(vector<int> arr)
 {
-    vector<int> freq(100, 0); // range is 0 to 99
-
+    vector<int> freq(100, 0);
     for (int x : arr)
     {
         freq[x]++;
