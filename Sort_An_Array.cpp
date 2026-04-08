@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Merge function
 void merge(vector<int> &nums, int left, int mid, int right)
 {
     vector<int> temp;
@@ -24,7 +23,6 @@ void merge(vector<int> &nums, int left, int mid, int right)
         nums[left + k] = temp[k];
 }
 
-// Merge Sort
 void mergeSort(vector<int> &nums, int left, int right)
 {
     if (left >= right)
@@ -42,7 +40,7 @@ int main()
     cout << "Enter number of elements: ";
     cin >> n;
 
-    cin.ignore(); // clear buffer
+    cin.ignore();
 
     cout << "Enter elements (comma or space separated): ";
     string input;
@@ -50,14 +48,12 @@ int main()
 
     vector<int> nums;
 
-    // Replace comma with space
     for (char &c : input)
     {
         if (c == ',')
             c = ' ';
     }
 
-    // Now read normally
     stringstream ss(input);
     int x;
     while (ss >> x)
@@ -65,7 +61,6 @@ int main()
         nums.push_back(x);
     }
 
-    // Safety check
     if (nums.size() != n)
     {
         cout << "Warning: Number of inputs doesn't match n!" << endl;
