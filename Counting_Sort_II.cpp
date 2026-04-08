@@ -3,15 +3,13 @@ using namespace std;
 
 vector<int> countingSort(vector<int> arr)
 {
-    vector<int> freq(100, 0); // values range 0–99
+    vector<int> freq(100, 0);
 
-    // Step 1: Count frequency
     for (int x : arr)
     {
         freq[x]++;
     }
 
-    // Step 2: Build sorted array
     vector<int> sorted;
     for (int i = 0; i < 100; i++)
     {
@@ -38,7 +36,6 @@ int main()
 
     vector<int> result = countingSort(arr);
 
-    // Output
     for (int i = 0; i < result.size(); i++)
     {
         cout << result[i];
