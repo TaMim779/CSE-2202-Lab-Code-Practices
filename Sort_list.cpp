@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Definition of linked list
 struct ListNode
 {
     int val;
@@ -12,7 +11,6 @@ struct ListNode
 class Solution
 {
 public:
-    // Merge two sorted lists
     ListNode *merge(ListNode *l1, ListNode *l2)
     {
         ListNode dummy(0);
@@ -41,7 +39,6 @@ public:
         return dummy.next;
     }
 
-    // Find middle
     ListNode *getMid(ListNode *head)
     {
         ListNode *slow = head;
@@ -56,7 +53,6 @@ public:
         return slow;
     }
 
-    // Merge sort
     ListNode *sortList(ListNode *head)
     {
         if (!head || !head->next)
@@ -77,10 +73,10 @@ int main()
 {
     int n;
     cin >> n;
-    cin.ignore(); // ignore newline
+    cin.ignore();
 
     string line;
-    getline(cin, line); // input like: -1,5,3,4,0
+    getline(cin, line);
 
     stringstream ss(line);
     string temp;
@@ -88,7 +84,6 @@ int main()
     ListNode *head = NULL;
     ListNode *tail = NULL;
 
-    // Create linked list from comma-separated input
     while (getline(ss, temp, ','))
     {
         int num = stoi(temp);
@@ -105,11 +100,9 @@ int main()
         }
     }
 
-    // Sort list
     Solution obj;
     head = obj.sortList(head);
 
-    // Print in LeetCode format
     cout << "[";
     while (head)
     {
