@@ -1,66 +1,73 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class MergeSort
+void merge(int A[], int left, int mid, int right);
+
+void merge_sort(int A[], int left, int right)
 {
-public:
-    void merge(vector<int> &nums1, int m, vector<int> &nums2, int n)
+    if (left >= right)
     {
-        int i = m - 1;
-        int j = n - 1;
-        int k = m + n - 1;
-
-        while (i >= 0 && j >= 0)
-        {
-            if (nums1[i] > nums2[j])
-            {
-                nums1[k] = nums1[i];
-                i--;
-            }
-            else
-            {
-                nums1[k] = nums2[j];
-                j--;
-            }
-            k--;
-        }
-
-        while (j >= 0)
-        {
-            nums1[k] = nums2[j];
-            j--;
-            k--;
-        }
+        return;
     }
-};
+    int mid = (left + right) / 2;
+
+    merge_sort(A, left, mid);
+    merge_sort(A, mid + 1, right);
+
+    merge(A, left, mid, right);
+}
+
+void merge(int A[], int left, int mid, int right)
+{
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+
+    int L[n1], R[n2];
+
+    for (int i = 0; i < n1; i++)
+        L[i] = A[left + i];
+
+    for (int j = 0; j < n2; j++)
+        R[j] = A[mid + 1 + j];
+
+    int i = 0, j = 0, k = left;
+
+    while (i < n1 && j < n2)
+    {
+        if (L[i] <= R[j])
+            A[k++] = L[i++];
+        else
+            A[k++] = R[j++];
+    }
+
+    while (i < n1)
+        A[k++] = L[i++];
+
+    while (j < n2)
+        A[k++] = R[j++];
+}
 
 int main()
 {
-    int m, n;
+    int n;
+    cout << "Enter number of elements: ";
+    cin >> n;
 
-    cin >> m >> n;
+    int A[n];
 
-    vector<int> nums1(m + n);
-    vector<int> nums2(n);
-
-    for (int i = 0; i < m; i++)
-    {
-        cin >> nums1[i];
-    }
-
+    cout << "Enter elements: ";
     for (int i = 0; i < n; i++)
     {
-        cin >> nums2[i];
+        cin >> A[i];
     }
 
-    MergeSort obj;
-    obj.merge(nums1, m, nums2, n);
+    merge_sort(A, 0, n - 1);
 
-    for (int x : nums1)
+    cout << "Sorted array: ";
+    for (int i = 0; i < n; i++)
     {
-        cout << x << " ";
+        cout << A[i] << " ";
     }
-    cout << endl;
 
     return 0;
 }
