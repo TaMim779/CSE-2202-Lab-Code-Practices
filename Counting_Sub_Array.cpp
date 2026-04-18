@@ -7,7 +7,7 @@ long long merge_count(vector<int> &prefix, int left, int mid, int right)
 
     for (int i = left; i <= mid; i++)
     {
-        int j = mid + 1; // reset j for each i
+        int j = mid + 1;
         while (j <= right && prefix[j] <= prefix[i])
         {
             j++;
